@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css">
+    <link rel="stylesheet" href="main.css" media="screen" title="no title" charset="utf-8">
+
+    <meta charset="utf-8">
+    <title>Find Drinks</title>
+  </head>
+  <body ng-controller="ctrl">
+
+
+    <div class="header">
+      <h1>Drink Finder</h1>
+    </div>
+
+    <section id="home">
+
+      <section id="searchbar">
+        <input ng-model="searchText" type="text" name="name">
+        <button class="button" ng-click="searchDrinks(searchText)" type="button" name="button">Get Drinks</button>
+      </section>
+
+      <section id="sidebar">
+        <div class="category" ng-repeat="category in categories" ng-click="searchDrinks(category)" >
+          <h3>{{category}}</h3>
+        </div>
+      </section>
+
+      <section id="recipes-container">
+            <md-card class="card" ng-repeat="drink in list" ng-click="openDrink($event, drink)">
+              <img class="md-card-image" src="{{drink.image_url}}" alt="" />
+              <md-card-title>
+                <md-card-title-text>{{drink.name}}</md-card-title-text>
+
+              </md-card-title>
+
+              <md-card-content>
+                <h4>{{drink.price_in_cents/100 | currency : '$' : 2 }}</h4>
+              </md-card-content>
+
+            </md-card>
+
+            <!-- <div class="card" ng-repeat="drink in list" ng-click="openDrink($event, drink)">
+              <img src="{{drink.image_url}}" alt="" />
+              <h4 class="recipe-title">{{drink.name}}</h4>
+              <h4>{{drink.price_in_cents/100 | currency : '$' : 2 }}</h4>
+
+              <h6>{{recipe.social_rank}}</h6>
+            </div> -->
+      </section>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+
+    <script src="/bower_components/angular-aria/angular-aria.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-material/angular-material.js"></script>
+
+<script type="text/javascript" src="main.js"></script>
+
+
+
+  </body>
+</html>
